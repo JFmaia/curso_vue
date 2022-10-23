@@ -12,6 +12,17 @@
         <h1>{{ cor }}</h1>
         <p>{{ i }}</p>
     </template> 
+    <hr>
+    <ul>
+        <!-- Percorrendo uma lista de objetos e mostrando atributos dos objetos -->
+        <li v-for="(pessoa, i) in pessoas">
+            {{i +1}} )
+            <div v-for="(valor, chave) in pessoa">
+                {{chave}}: {{valor}}
+            </div>
+            <br>
+        </li>
+    </ul>
 </div>
 
 <script>
