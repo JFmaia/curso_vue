@@ -1,0 +1,54 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+    <ul>
+        <!-- Tendo acesso ao index -->
+        <li v-for="(cor,i) in cores" :key="cor">{{i}}) {{cor}} </li>
+    </ul>
+    <button @click="cores.push('branca')">Adicionar</button>
+    <hr>
+    <!-- Usando template o v-for vai so rederizar as tags dentro do template e não criar uma tag englobando eles. -->
+    <template v-for="(cor,i) in cores">
+        <h1>{{ cor }}</h1>
+        <p>{{ i }}</p>
+    </template> 
+    <hr>
+    <ul>
+        <!-- Percorrendo uma lista de objetos e mostrando atributos dos objetos -->
+        <li v-for="(pessoa, i) in pessoas">
+            {{i +1}} )
+            <div v-for="(valor, chave) in pessoa">
+                {{chave}}: {{valor}}
+            </div>
+            <br>
+        </li>
+    </ul>
+    <hr>
+    <div v-for="n in 10">{{n}}</div>
+</div>
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            cores: ["vermelho","azul","rosa","verde","amarelo","preto"],
+            pessoas:[
+                {nome:"José", idade:26, peso:52},
+                {nome:"Gabriel", idade:24, peso:80},
+                {nome:"Mayara", idade:24, peso:48}
+            ]
+        }
+    })
+</script>
+
+<style>
+    ul{
+        list-style: none;
+    }
+
+    h1,p{
+        display: inline;
+    }
+
+</style>
