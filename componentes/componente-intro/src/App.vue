@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h2>Contadores</h2>
-    <app-contador/>
+    <appContadores/>
   </div>
 </template>
 
