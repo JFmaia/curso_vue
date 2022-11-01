@@ -24,7 +24,8 @@ export default {
 }
 </script>
 
-<style>
+<!-- Referenciando que esse estilo é só do componente -->
+<style scoped>
     .contador span{
         border-bottom: 1px solid #CCC;
         height: 30px;
