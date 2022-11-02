@@ -2,13 +2,19 @@
     <div class="componente">
         <h2>As Informações de Usuário</h2>
         <p>Vários detalhes...</p>
-        <p>Nome do Usuário:<strong>{{nome}}</strong></p>
+        <p>Nome do Usuário:<strong>{{inverteNome()}}</strong></p>
     </div>
 </template>
 
 <script>
 export default {
-    
+    //Esse valor dentro de props pode ser usado normalmente dentro deste componente!
+    props: ['nome'],
+    methods:{
+        inverteNome(){
+            return this.nome.split('').reverse().join('')
+        }
+    }
 }
 </script>
 
