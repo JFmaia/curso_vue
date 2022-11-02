@@ -9,7 +9,13 @@
 <script>
 export default {
     //Esse valor dentro de props pode ser usado normalmente dentro deste componente!
-    props: ['nome'],
+    props: {
+        //validando propriedade
+        nome:{
+            type:String,
+            required: true
+        }
+    },
     methods:{
         inverteNome(){
             return this.nome.split('').reverse().join('')
