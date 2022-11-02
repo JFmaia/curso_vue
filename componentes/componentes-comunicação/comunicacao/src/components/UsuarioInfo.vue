@@ -13,7 +13,10 @@ export default {
         //validando propriedade
         nome:{
             type:String,
-            required: true
+            // required: true
+            // default:function(){
+            //     return Array(10).fill(3).join(',')
+            // }
         }
     },
     methods:{
