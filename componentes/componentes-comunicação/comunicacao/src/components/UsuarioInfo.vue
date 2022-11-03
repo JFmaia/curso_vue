@@ -3,7 +3,8 @@
         <h2>As Informações de Usuário</h2>
         <p>Vários detalhes...</p>
         <p>Nome do Usuário:<strong>{{inverteNome()}}</strong></p>
-        <button @click="reiniciarNome">Reiniciar nome</button>
+        <button @click="reiniciarNome">Reiniciar Nome</button>
+        <button @click="reiniciarFN()">Reiniciar Nome (Callback)</button>
     </div>
 </template>
 
@@ -18,6 +19,10 @@ export default {
             // default:function(){
             //     return Array(10).fill(3).join(',')
             // }
+            default: "Anônimo",
+        },
+        reiniciarFN: function(){
+
         }
     },
     methods:{
