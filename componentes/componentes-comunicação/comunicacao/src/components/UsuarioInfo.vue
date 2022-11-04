@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import barramento from '@/barramento'
 export default {
     //Esse valor dentro de props pode ser usado normalmente dentro deste componente!
     props:{
@@ -33,6 +34,11 @@ export default {
             this.nome="José"
             this.$emit("nomeMudou", this.nome)
         }
+    },
+    created() {
+        barramento.$on('idadeMudou',idade => {
+            this.idade = idade
+        })
     },
 }
 </script>
