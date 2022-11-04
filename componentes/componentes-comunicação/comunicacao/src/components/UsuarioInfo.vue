@@ -3,6 +3,7 @@
         <h2>As Informações de Usuário</h2>
         <p>Vários detalhes...</p>
         <p>Nome do Usuário:<strong>{{inverteNome()}}</strong></p>
+        <p>Idade do Usuário:<strong>{{idade}}</strong></p>
         <button @click="reiniciarNome">Reiniciar Nome</button>
         <button @click="reiniciarFN()">Reiniciar Nome (Callback)</button>
     </div>
@@ -11,7 +12,7 @@
 <script>
 export default {
     //Esse valor dentro de props pode ser usado normalmente dentro deste componente!
-    props: {
+    props:{
         //validando propriedade
         nome:{
             type:String,
@@ -21,9 +22,8 @@ export default {
             // }
             default: "Anônimo",
         },
-        reiniciarFN: function(){
-
-        }
+        idade:Number,
+        reiniciarFN: Function,
     },
     methods:{
         inverteNome(){
@@ -33,7 +33,7 @@ export default {
             this.nome="José"
             this.$emit("nomeMudou", this.nome)
         }
-    }
+    },
 }
 </script>
 
