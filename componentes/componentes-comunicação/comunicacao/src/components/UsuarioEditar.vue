@@ -13,8 +13,8 @@ export default {
     props:['idade'],
     methods:{
         alterarIdade(){
-            this.idade = 33
-            barramento.$emit('idadeMudou', this.idade)
+            this.idade += 1
+            barramento.alterarIdade(this.idade)
         }
     },
 }
