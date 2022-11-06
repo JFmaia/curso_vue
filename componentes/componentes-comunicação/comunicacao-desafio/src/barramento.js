@@ -6,7 +6,7 @@ export default new Vue({
             this.$emit('usuarioSelecionado', usuario)
         },
         onUsuarioSelecionado(callback){
-            this.$on('ususarioSelecionado', callback)
+            this.$on('usuarioSelecionado', callback)
         }
     }
 })
