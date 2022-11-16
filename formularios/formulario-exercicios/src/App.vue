@@ -4,14 +4,17 @@
 		<div class="conteudo">
 			<form class="painel">
 				<div class="cabecalho">Formulário</div>
-				<Rotulo nome="E-mail">
-					<input type="text">
+				<Rotulo nome="E-mail" >
+					<!--O trim tira os espaços em branco e tbm pode ser encadeado com o os outros-->
+					<input v-model.lazy.trim="usuario.email" type="text">
 				</Rotulo>
 				<Rotulo nome="Senha">
-					<input type="password">
+					<!--O lazy só aplica a mudança quando sai do campo perdendo o focus-->
+					<input v-model.lazy="usuario.senha" type="password">
 				</Rotulo>
 				<Rotulo nome="Idade">
-					<input type="number">
+					<!--Coloca dentro da sua instancia um valor numérico e não uma string-->
+					<input v-model.number="usuario.idade" type="number">
 				</Rotulo>
 				<Rotulo nome="Mensagem">
 					<textarea name="" cols="30" rows="5"></textarea>
@@ -39,13 +42,13 @@
 			<div class="painel">
 				<div class="cabecalho">Resultado</div>
 				<Rotulo nome="E-mail">
-					<span>???</span>
+					<span> {{usuario.email}} </span>
 				</Rotulo>
 				<Rotulo nome="Senha">
-					<span>???</span>
+					<span>{{usuario.senha}}</span>
 				</Rotulo>
 				<Rotulo nome="Idade">
-					<span>???</span>
+					<span>{{usuario.idade}}</span>
 				</Rotulo>
 				<Rotulo nome="Mensagem">
 					<span>???</span>
@@ -73,7 +76,16 @@ import Escolha from './components/Escolha.vue'
 
 export default {
 	name: 'app',
-	components: { Rotulo, Escolha }
+	components: { Rotulo, Escolha },
+	data(){
+		return{
+			usuario:{
+				email:"",
+				senha:"",
+				idade: 25
+			}
+		}
+	}
 }
 </script>
 
