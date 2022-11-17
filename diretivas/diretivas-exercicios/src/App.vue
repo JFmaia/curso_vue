@@ -1,6 +1,11 @@
 <template>
 	<div id="app">
 		<h1>Diretivas</h1>
+		<hr>
+		<!--PEGA o texto ou codigo esperado e coloca na tag em questão-->
+		<p v-text="'Usando ddiretiva v-text'"></p>
+		<!--PEGA o texto ou codigo com html e executa as tags htmls-->
+		<p v-html="'Usando diretiva <strong>v-html</strong>'"></p>
 	</div>
 </template>
 
