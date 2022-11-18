@@ -7,13 +7,17 @@
 		<!--PEGA o texto ou codigo com html e executa as tags htmls-->
 		<p v-html="'Usando diretiva <strong>v-html</strong>'"></p>
 		<hr>
-		<p v-destaque="'red'">Usando diretiva personalizada</p>
+		<p v-destaque="cor">Usando diretiva personalizada</p>
 	</div>
 </template>
 
 <script>
 export default {
-	
+	data(){
+		return{
+			cor: 'green'
+		}
+	}
 }
 </script>
 
