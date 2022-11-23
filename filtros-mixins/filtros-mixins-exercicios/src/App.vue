@@ -2,6 +2,8 @@
 	<div id="app">
 		<h1>Filtros & Mixins</h1>
 		<hr>
+		<!--Usando um metodo computavel do mixin-->
+		<p>{{usuarioLogado}}</p>
 		<!-- Cada resultado de um filtro passa para o outro.-->
 		<p>{{cpfDoAluno | cpf() | inverter()}}</p>
 		<input type="text" :value="cpfDoAluno | cpf()">
@@ -20,9 +22,12 @@
 </template>
 
 <script>
+import frutasMixin from './frutasMixin'
+import usuarioMixin from './usuarioMixin'
 import Frutas from './Frutas.vue'
 export default {
 	components:{Frutas},
+	mixins:[frutasMixin, usuarioMixin],
 	//Filtros servem para modificar valores de uma variavel, podendo ser utilizados como mascaras.
 	filters:{
 		cpf(valor){
@@ -36,8 +41,6 @@ export default {
 	data(){
 		return{
 			cpfDoAluno: "08220675446",
-			fruta:'',
-            frutas:['banana','tangerina','abacaxi']
 		}
 	},
 	methods:{
