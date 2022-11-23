@@ -48,7 +48,10 @@ export default {
             this.frutas.push(this.fruta)
             this.fruta=''
         }
-	}
+	},
+	created(){
+        console.log('Created - App.vue')
+    }
 }
 </script>
 
