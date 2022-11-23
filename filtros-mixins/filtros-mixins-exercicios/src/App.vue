@@ -2,6 +2,7 @@
 	<div id="app">
 		<h1>Filtros & Mixins</h1>
 		<hr>
+		<h1>{{global}}</h1>
 		<!--Usando um metodo computavel do mixin-->
 		<p>{{usuarioLogado}}</p>
 		<!-- Cada resultado de um filtro passa para o outro.-->
