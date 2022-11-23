@@ -4,6 +4,7 @@
 		<hr>
 		<!-- Cada resultado de um filtro passa para o outro.-->
 		<p>{{cpfDoAluno | cpf() | inverter()}}</p>
+		<input type="text" :value="cpfDoAluno | cpf()">
 	</div>
 </template>
 
@@ -35,6 +36,10 @@ export default {
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px;
+	font-size: 2.5rem;
+}
+
+input{
 	font-size: 2.5rem;
 }
 </style>
