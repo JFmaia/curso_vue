@@ -5,11 +5,24 @@
 		<!-- Cada resultado de um filtro passa para o outro.-->
 		<p>{{cpfDoAluno | cpf() | inverter()}}</p>
 		<input type="text" :value="cpfDoAluno | cpf()">
+		<hr>
+		<Frutas></Frutas>
+		<hr>
+		<div>
+			<ul>
+				<li v-for="fruta in frutas" :key="fruta">
+					{{fruta}}
+				</li>
+			</ul>
+			<input type="text" v-model="fruta" @keydown.enter="add()">  
+		</div>
 	</div>
 </template>
 
 <script>
+import Frutas from './Frutas.vue'
 export default {
+	components:{Frutas},
 	//Filtros servem para modificar valores de uma variavel, podendo ser utilizados como mascaras.
 	filters:{
 		cpf(valor){
@@ -22,8 +35,16 @@ export default {
 	},
 	data(){
 		return{
-			cpfDoAluno: "08220675446"
+			cpfDoAluno: "08220675446",
+			fruta:'',
+            frutas:['banana','tangerina','abacaxi']
 		}
+	},
+	methods:{
+		add(){
+            this.frutas.push(this.fruta)
+            this.fruta=''
+        }
 	}
 }
 </script>
