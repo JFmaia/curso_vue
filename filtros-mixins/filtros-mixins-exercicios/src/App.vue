@@ -2,6 +2,7 @@
 	<div id="app">
 		<h1>Filtros & Mixins</h1>
 		<hr>
+		<!-- Cada resultado de um filtro passa para o outro.-->
 		<p>{{cpfDoAluno | cpf() | inverter()}}</p>
 	</div>
 </template>
