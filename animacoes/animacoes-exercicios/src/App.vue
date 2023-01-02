@@ -39,7 +39,10 @@
 		<!-- Animações com JS -->
 		<hr>
 		<b-button variant="dark" @click="exibir2=!exibir2">Mostrar</b-button>
+		<!-- O ':css' evita que qualquer css interfira nessa transição -->
 		<transition
+			:css="false"
+			
 			@before-enter="beforeEnter"
 			@enter="enter"
 			@after-enter="afterEnter"
