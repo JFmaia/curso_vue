@@ -4,17 +4,18 @@
 		<hr>
 		<b-button variant="primary" class="mb-4" @click="exibir = !exibir">Mostrar Mensagem</b-button>
 
-		<transition name="fade">
+		<!--O 'appear' serve para quando sua aplicação for carregada sua animação seja executada-->
+		<transition name="fade" appear>
 			<b-alert variant="info" show v-if="exibir">{{msg}}</b-alert>
 		</transition>
 
-		<transition name="slide">
+		<transition name="slide" appear>
 			<b-alert variant="info" show v-if="exibir">{{msg}}</b-alert>
 		</transition>
 
 		<!-- Adicionando o type vc define quem manda na transição logo o time ha ser seguido será do escolhido-->
 		<!-- V-show tbm é suportado nessa situação-->
-		<transition name="slide_fade" type="animation">
+		<transition name="slide_fade" type="animation" appear>
 			<b-alert variant="info" show v-show="exibir">{{msg}}</b-alert>
 		</transition>
 	</div>
@@ -26,7 +27,7 @@ export default {
 	data(){
 		return{
 			msg: 'Uma mensagem de informações para o Usuário!',
-			exibir:false,
+			exibir:true,
 		}
 	}
 }
