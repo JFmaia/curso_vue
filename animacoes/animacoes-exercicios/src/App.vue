@@ -13,8 +13,9 @@
 		</transition>
 
 		<!-- Adicionando o type vc define quem manda na transição logo o time ha ser seguido será do escolhido-->
+		<!-- V-show tbm é suportado nessa situação-->
 		<transition name="slide_fade" type="animation">
-			<b-alert variant="info" show v-if="exibir">{{msg}}</b-alert>
+			<b-alert variant="info" show v-show="exibir">{{msg}}</b-alert>
 		</transition>
 	</div>
 </template>
