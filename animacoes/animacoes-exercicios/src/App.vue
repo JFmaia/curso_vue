@@ -18,6 +18,16 @@
 		<transition name="slide_fade" type="animation" appear>
 			<b-alert variant="info" show v-show="exibir">{{msg}}</b-alert>
 		</transition>
+
+		<!-- Manipulando com :bind-->
+		<hr>
+		<b-select v-model="typeAnimation" class="mb-4">
+			<option value="fade">Fade</option>
+			<option value="slide_fade">Slide-Fade</option>
+		</b-select>
+		<transition :name="typeAnimation">
+			<b-alert variant="info" show v-show="exibir">{{msg}}</b-alert>
+		</transition>
 	</div>
 </template>
 
@@ -28,6 +38,7 @@ export default {
 		return{
 			msg: 'Uma mensagem de informações para o Usuário!',
 			exibir:true,
+			typeAnimation: 'fade',
 		}
 	}
 }
