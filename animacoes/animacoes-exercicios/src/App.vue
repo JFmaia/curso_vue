@@ -12,6 +12,10 @@
 			<b-alert variant="info" show v-if="exibir">{{msg}}</b-alert>
 		</transition>
 
+		<!-- Adicionando o type vc define quem manda na transição logo o time ha ser seguido será do escolhido-->
+		<transition name="slide_fade" type="animation">
+			<b-alert variant="info" show v-if="exibir">{{msg}}</b-alert>
+		</transition>
 	</div>
 </template>
 
@@ -65,4 +69,21 @@ export default {
 .slide-leave-active{
 	animation: slide-out 1s ease;
 }
+
+/* Terceira animação */
+
+.slide_fade-enter-active{
+	animation: slide-in 1s ease;
+	transition: opacity 1s;
+}
+
+.slide_fade-leave-active{
+	animation: slide-out 1s ease;
+	transition: opacity 1s;
+}
+
+.slide_fade-enter, .slide_fade-leave-to{
+	opacity: 0;
+}
+
 </style>
