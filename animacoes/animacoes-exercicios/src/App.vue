@@ -21,12 +21,36 @@
 
 		<!-- Manipulando com :bind-->
 		<hr>
-		<b-select v-model="typeAnimation" class="mb-4">
+		<b-select v-model="typeAnimation" class="mb-4" appear>
 			<option value="fade">Fade</option>
 			<option value="slide_fade">Slide-Fade</option>
 		</b-select>
 		<transition :name="typeAnimation">
 			<b-alert variant="info" show v-show="exibir">{{msg}}</b-alert>
+		</transition>
+
+		<!-- Animação entre um ou outro elemento -->
+		<!-- Existe tbm o mode para escolhe como inicia: exmplo primeiro o elemento sai e depois o outro inicia -->
+		<transition name="fade" mode="out-in">
+			<b-alert variant="info" show v-if="exibir" key="info">{{msg}}</b-alert>
+			<b-alert variant="warning" show v-else key="warning">{{msg}}</b-alert>
+		</transition>
+
+		<!-- Animações com JS -->
+		<hr>
+		<b-button variant="dark" @click="exibir2=!exibir2">Mostrar</b-button>
+		<transition
+			@before-enter="beforeEnter"
+			@enter="enter"
+			@after-enter="afterEnter"
+			@enter-cancelled="enterCancelled"
+
+			@before-leave="beforeLeave"
+			@leave="leave"
+			@after-leave="afterLeave"
+			@leave-cancelled="leaveCancelled"
+		>
+			<div v-if="exibir2" class="caixa"></div>
 		</transition>
 	</div>
 </template>
@@ -38,9 +62,39 @@ export default {
 		return{
 			msg: 'Uma mensagem de informações para o Usuário!',
 			exibir:true,
+			exibir2:true,
 			typeAnimation: 'fade',
 		}
-	}
+	},
+	methods:{
+		beforeEnter(el){
+			console.log('beforeEnter');
+		},
+		enter(el, done){
+			console.log('enter');
+			done();
+		},
+		afterEnter(el){
+			console.log('afterEnter');
+		},
+		enterCancelled(){
+			console.log('enterCancelled');
+		},
+
+		beforeLeave(el){
+			console.log('beforeLeave');
+		},
+		leave(el, done){
+			console.log('leave');
+			done();
+		},
+		afterLeave(el){
+			console.log('afterLeave');
+		},
+		leaveCancelled(){
+			console.log('leaveCancelled');
+		},
+	},
 }
 </script>
 
@@ -54,6 +108,16 @@ export default {
 	margin-top: 60px;
 	font-size: 1.5rem;
 }
+
+/* TRASIÇÕES COM JS */
+.caixa{
+	height: 100px;
+	width: 300px;
+	margin: 30px auto;
+	background-color: lightcoral;
+}
+
+/* TRASIÇÕES COM CSS */
 
 /* Primeira animação */
 .fade-enter, .fade-leave-to{
