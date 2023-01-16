@@ -1,10 +1,9 @@
 <template>
 	<div id="app" class="container-fluid">
-		<h1>Animações</h1>
+		<!-- <h1>Animações</h1>
 		<hr>
 		<b-button variant="primary" class="mb-4" @click="exibir = !exibir">Mostrar Mensagem</b-button>
 
-		<!--O 'appear' serve para quando sua aplicação for carregada sua animação seja executada-->
 		<transition name="fade" appear>
 			<b-alert variant="info" show v-if="exibir">{{msg}}</b-alert>
 		</transition>
@@ -13,13 +12,10 @@
 			<b-alert variant="info" show v-if="exibir">{{msg}}</b-alert>
 		</transition>
 
-		<!-- Adicionando o type vc define quem manda na transição logo o time ha ser seguido será do escolhido-->
-		<!-- V-show tbm é suportado nessa situação-->
 		<transition name="slide_fade" type="animation" appear>
 			<b-alert variant="info" show v-show="exibir">{{msg}}</b-alert>
 		</transition>
 
-		<!-- Manipulando com :bind-->
 		<hr>
 		<b-select v-model="typeAnimation" class="mb-4" appear>
 			<option value="fade">Fade</option>
@@ -29,17 +25,13 @@
 			<b-alert variant="info" show v-show="exibir">{{msg}}</b-alert>
 		</transition>
 
-		<!-- Animação entre um ou outro elemento -->
-		<!-- Existe tbm o mode para escolhe como inicia: exmplo primeiro o elemento sai e depois o outro inicia -->
 		<transition name="fade" mode="out-in">
 			<b-alert variant="info" show v-if="exibir" key="info">{{msg}}</b-alert>
 			<b-alert variant="warning" show v-else key="warning">{{msg}}</b-alert>
 		</transition>
 
-		<!-- Animações com JS -->
 		<hr>
 		<b-button variant="dark" @click="exibir2=!exibir2">Alternar</b-button>
-		<!-- O ':css' evita que qualquer css interfira nessa transição -->
 		<transition
 			:css="false"
 			
@@ -63,7 +55,15 @@
 		</div>
 		<transition name="slide_fade" appear mode="out-in">
 			<component :is="componenteSelecionado"></component>
-		</transition>
+		</transition> -->
+
+		<hr>
+		<b-button @click="adicionarAluno" class="mb-4">Adicionar aluno</b-button>
+		<b-list-group v-for="aluno,i in alunos" :key="aluno">		
+			<b-list-grou-item @click="removeAluno(i)">
+				{{ aluno }}
+			</b-list-grou-item>
+		</b-list-group>
 	</div>
 </template>
 
@@ -74,6 +74,7 @@ export default {
 	components:{ AlertaAdvertencia, AlertaInfo},
 	data(){
 		return{
+			alunos:['Roberto','Julia','Teresa', 'Paulo'],
 			msg: 'Uma mensagem de informações para o Usuário!',
 			exibir:true,
 			exibir2:true,
@@ -83,6 +84,13 @@ export default {
 		}
 	},
 	methods:{
+		adicionarAluno(){
+			const s = Math.random().toString(36).substring(2);
+			this.alunos.push(s);
+		},
+		removeAluno(indece){
+			this.alunos.splice(indece, 1);	
+		},
 		animar(el, done, negativo){
 			let rodada = 1
 			const temporizador = setInterval(() => {
