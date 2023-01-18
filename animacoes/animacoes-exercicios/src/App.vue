@@ -59,11 +59,14 @@
 
 		<hr>
 		<b-button @click="adicionarAluno" class="mb-4">Adicionar aluno</b-button>
-		<b-list-group v-for="aluno,i in alunos" :key="aluno">		
-			<b-list-grou-item @click="removeAluno(i)">
-				{{ aluno }}
-			</b-list-grou-item>
-		</b-list-group>
+		<!--Transição em grupos-->
+		<transition-group name="slide_fade" tag="div">
+			<b-list-group v-for="aluno,i in alunos" :key="aluno">		
+				<b-list-grou-item @click="removeAluno(i)">
+					{{ aluno }}
+				</b-list-grou-item>
+			</b-list-group>
+		</transition-group>
 	</div>
 </template>
 
@@ -197,12 +200,18 @@ export default {
 }
 
 .slide_fade-leave-active{
+	position: absolute;
+	width: 100%;
 	animation: slide-out 1s ease;
 	transition: opacity 1s;
 }
 
 .slide_fade-enter, .slide_fade-leave-to{
 	opacity: 0;
+}
+
+.slide_fade-move{
+	transition: transform 1s;
 }
 
 </style>
