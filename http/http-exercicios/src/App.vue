@@ -24,10 +24,10 @@
 		</b-card>
 		<hr>
 		<b-list-group class="list-users">
-			<b-list-group-item v-for="usuario,id in usuarios" :key="id">
+			<b-list-group-item v-for="usuario in usuarios" :key="usuario.id">
 				<strong>Nome: </strong>{{ usuario.nome }} <br>
 				<strong>Email: </strong>{{ usuario.email }} <br>
-				<strong>ID: </strong>{{ id }}
+				<strong>ID: </strong>{{ usuario.id}}
 			</b-list-group-item>
 		</b-list-group>
 	</div>
@@ -57,7 +57,11 @@ export default {
 		obterUsuarios(){
 			this.$http.get('usuarios.json').then(resp => {
 				this.usuarios = resp.data
+				console.log(resp.data)
 			})
+			const token = 'abc1234567890'
+			//Adicionando um token de autorização depois de listar users.
+			this.$http.defaults.headers.common['Authorization'] = token
 		}
 	},
 	// created() {
