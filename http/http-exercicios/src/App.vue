@@ -5,8 +5,14 @@
 </template>
 
 <script>
-export default {
 
+export default {
+	created() {
+		this.$http.post('usuarios.json',{
+			nome:"Maria",
+			email: "maria741@gmail.com"
+		}).then(res => console.log(res));
+	},
 }
 </script>
 
