@@ -24,10 +24,12 @@
 		</b-card>
 		<hr>
 		<b-list-group class="list-users">
-			<b-list-group-item v-for="usuario in usuarios" :key="usuario.id">
+			<b-list-group-item v-for="usuario,id in usuarios" :key="id">
 				<strong>Nome: </strong>{{ usuario.nome }} <br>
 				<strong>Email: </strong>{{ usuario.email }} <br>
-				<strong>ID: </strong>{{ usuario.id}}
+				<strong>ID: </strong>{{ id }} <br>
+				<b-button variant="warning" size="lg" @click="carregar(id)">Carregar</b-button>
+				<b-button class="ml-2" variant="danger" size="lg" @click="excluir(id)">Excluir</b-button>
 			</b-list-group-item>
 		</b-list-group>
 	</div>
@@ -38,6 +40,7 @@
 export default {
 	data(){
 		return{
+			id: null,
 			usuarios:[],
 			usuario:{
 				nome:'',
@@ -46,22 +49,31 @@ export default {
 		}
 	},
 	methods: {
+		limpar(){
+			this.usuario.nome = '';
+			this.usuario.email = '';
+			this.id = null;
+		},
+
+		carregar(id){
+            this.id = id;
+			this.usuario = { ...this.usuarios[id] }
+		},
+	
 		salvar(){
-			this.$http.post('usuarios.json', this.usuario)
-				.then(resp => {
-					this.usuario.nome = '';
-					this.usuario.email = '';
-				})
+			const metodo = this.id ? 'patch' : 'post';
+			const finaUrl = this.id ? `/${this.id}.json` : '.json';
+			this.$http[metodo](`/usuarios${finaUrl}`, this.usuario)
+				.then(_ => this.limpar())
 		},
 
 		obterUsuarios(){
 			this.$http.get('usuarios.json').then(resp => {
 				this.usuarios = resp.data
-				console.log(resp.data)
 			})
-			const token = 'abc1234567890'
+			// const token = 'abc1234567890'
 			//Adicionando um token de autorização depois de listar users.
-			this.$http.defaults.headers.common['Authorization'] = token
+			// this.$http.defaults.headers.common['Authorization'] = token
 		}
 	},
 	// created() {
