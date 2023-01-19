@@ -6,6 +6,8 @@
         <span v-else>
             Resposta Errada! :(
         </span>
+        <hr>
+        <button @click="$emit('confirmed')">Próxima Pergunta</button>
     </div>
 </template>
 
