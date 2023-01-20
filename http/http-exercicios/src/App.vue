@@ -1,6 +1,9 @@
 <template>
 	<div id="app" class="container">
 		<h1>HTTP com Axios</h1>
+		<b-alert show dismissible v-for="mensagem in mensagens" :key="mensagem.texto" :variant="mensagem.tipo">
+			{{ mensagem.texto }}
+		</b-alert>
 		<b-card>
 			<b-form-group label="Nome:">
 				<b-form-input 
@@ -40,6 +43,7 @@
 export default {
 	data(){
 		return{
+			mensagens:[],
 			id: null,
 			usuarios:[],
 			usuario:{
@@ -52,6 +56,7 @@ export default {
 		limpar(){
 			this.usuario.nome = '';
 			this.usuario.email = '';
+			this.mensagens= [];
 			this.id = null;
 		},
 
@@ -59,12 +64,35 @@ export default {
             this.id = id;
 			this.usuario = { ...this.usuarios[id] }
 		},
+
+		excluir(id){
+			this.$http.delete(`usuarios/${id}.json`)
+				.then(() => {
+					this.limpar();
+					this.mensagens.push({
+						texto: "Exclusão bem sucedida!",
+						tipo:"success"
+					})
+				})
+				.catch(err => {
+					this.mensagens.push({
+						texto: "Problema para excluir!",
+						tipo:"danger"
+					})
+				})
+		},
 	
 		salvar(){
 			const metodo = this.id ? 'patch' : 'post';
 			const finaUrl = this.id ? `/${this.id}.json` : '.json';
 			this.$http[metodo](`/usuarios${finaUrl}`, this.usuario)
-				.then(_ => this.limpar())
+				.then(_ => {
+					this.limpar();
+					this.mensagens.push({
+						texto: 'Operação realizada com sucesso!',
+						tipo: 'success'
+					})
+				})
 		},
 
 		obterUsuarios(){
