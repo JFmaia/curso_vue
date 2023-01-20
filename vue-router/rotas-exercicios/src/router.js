@@ -16,8 +16,9 @@ export default new Router({
         },
         {
             path: '/usuario/:id',
-            component: Usuario
-
+            component: Usuario,
+            //Permitindo que todos os parametros da rota sejam passados como atributos
+            props: true,
         },
     ]
 });
