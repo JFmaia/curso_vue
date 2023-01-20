@@ -8,6 +8,7 @@ Vue.use(Router)
 
 // Class de configuração do vue-router
 export default new Router({
+    mode: 'history',
     routes:[
         {
             path: '/',
