@@ -1,6 +1,8 @@
 <template>
 	<div id="app">
 		<h1>Rotas com VueRouter</h1>
+		<!--Adicionando a entrada das rotas no App-->
+		<router-view />
 	</div>
 </template>
 
