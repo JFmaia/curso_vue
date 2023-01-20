@@ -16,7 +16,8 @@ export default new Router({
     routes:[
         {
             path: '/',
-            component: Inicio
+            component: Inicio,
+            name:'inicio',
         },
         {
             path: '/usuario',
@@ -25,9 +26,18 @@ export default new Router({
             props: true,
             //Rotas Aninhadas
             children:[
-                { path: '', component: UsuarioLista},
-                { path: ':id', component: UsuarioDetalhe, props:true},
-                { path: ':id/editar', component: UsuarioEditar, props:true},
+                { 
+                    path: '', component: UsuarioLista,
+                },
+                { 
+                    path: ':id', component: UsuarioDetalhe, props:true,
+                },
+                { 
+                    path: ':id/editar', 
+                    component: UsuarioEditar, 
+                    props:true,
+                    name: 'editarUsuario',
+                },
             ]
         },
     ]
