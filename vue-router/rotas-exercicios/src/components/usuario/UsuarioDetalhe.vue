@@ -23,8 +23,8 @@ export default {
     //     console.log(userId.id)
     // });
     //caso o usuario não estivesse autenticado com o token ou expirou, exemplo:
-    const autenticado = false;
-    autenticado ? next : next(false);
+    const autenticado = true;
+    autenticado ? next() : next(false);
    }
 }
 </script>

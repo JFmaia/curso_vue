@@ -5,7 +5,7 @@
         <p><strong>Completo:</strong>{{ $route.query.completo ? 'Sim' : 'Não' }}</p>
         <p><strong>Lingua:</strong>{{ $route.query.lingua}}</p>
         <hr>
-        <button primario>Confirma</button>
+        <button primario @click="confirmou = !confirmou">Confirma</button>
 
         <div id="rodape">
             <h3>Curso Vue</h3>
@@ -16,6 +16,23 @@
 export default {
     //Pegando os parametros da rota
    props:['id'],
+   data(){
+    return{
+        confirmou:false,
+    }
+   },
+   // Antes de sair da rota
+   beforeRouteLeave (to, from, next) {
+        if(this.confirmou){
+            next();
+        }else{
+            if(confirm('Tem certeza ?')){
+                next();
+            }else{
+                next(false);
+            }
+        }
+   }
 }
 </script>
 <style>
