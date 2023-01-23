@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Inicio from './components/Inicio';
+import Menu from './components/template/Menu';
+import MenuAlt from './components/template/MenuAlt';
 
 import Usuario from './components/usuario/Usuario';
 import UsuarioLista from './components/usuario/UsuarioLista';
@@ -16,21 +18,31 @@ export default new Router({
     routes:[
         {
             path: '/',
-            component: Inicio,
             name:'inicio',
+            // component: Inicio,
+            components:{
+                default: Inicio,
+                menu:Menu,
+            }
         },
         {
             path: '/usuario',
-            component: Usuario,
+            components:{
+                default: Usuario,
+                menu: MenuAlt,
+            },
             //Permitindo que todos os parametros da rota sejam passados como atributos
             props: true,
             //Rotas Aninhadas
             children:[
                 { 
-                    path: '', component: UsuarioLista,
+                    path: '', 
+                    component: UsuarioLista,
                 },
                 { 
-                    path: ':id', component: UsuarioDetalhe, props:true,
+                    path: ':id', 
+                    component: UsuarioDetalhe, 
+                    props:true,
                 },
                 { 
                     path: ':id/editar', 
