@@ -11,7 +11,7 @@
 </template>
 
 <script lang="js">
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
@@ -39,8 +39,14 @@ export default {
     //     },
     // },
     methods: {
-        //Setando o sett 'adicionarProduto' nos methods.
-        ...mapMutations(['adicionarProduto']),
+        /*
+            Setando o sett 'adicionarProduto' nos methods. Se fosse para usar a mutations de forma direta.
+            Ex:. ...mapMutations(['adicionarProduto']),
+        */ 
+
+        //Utilizando Actions
+        ...mapActions(['adicionarProduto']),
+
         adicionar() {
             const produto = {
                 id: this.sequencia,
@@ -49,10 +55,18 @@ export default {
                 preco: this.preco
             }
             this.sequencia++
-            //Adicionando no stado central do vuex, onde vai atualizar todos os outros componentes.
+
+            //Metodos para usar as actions.
             this.adicionarProduto(produto);
-            // this.$store.commit('adicionarProduto',produto);
-            // this.$store.state.produtos.push(produto);
+            // this.$store.dispatch('adicionarProduto',produto);
+
+            //Modificando o estado usando uma mutation de forma direta. Formas:
+            /*
+                1-this.adicionarProduto(produto);
+                2-this.$store.commit('adicionarProduto',produto);
+                3-this.$store.state.produtos.push(produto);
+            */ 
+            
         }
     }
 }
