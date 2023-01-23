@@ -13,7 +13,7 @@ import UsuarioEditar from './components/usuario/UsuarioEditar';
 Vue.use(Router)
 
 // Class de configuração do vue-router
-export default new Router({
+const router = new Router({
     mode: 'history',
     // Função de scroll até a ancora desejada com o hash
     scrollBehavior(to, from, savedPosition){
@@ -55,6 +55,11 @@ export default new Router({
                     path: ':id', 
                     component: UsuarioDetalhe, 
                     props:true,
+                    //Dentro do objeto se usa 'beforeEnter' fora do objeto se usa 'beforeEach'
+                    beforeEnter: (to,from,next) =>{
+                        console.log("antes da rota - usuario detalhe");
+                        next();
+                    },
                 },
                 { 
                     path: ':id/editar', 
@@ -78,3 +83,16 @@ export default new Router({
         },
     ]
 });
+
+//Formato global de interagir com a rota antes de entrar nela
+router.beforeEach((to,from,next)=>{
+    console.log('Antes das rotas -> Global')
+    // if(to.path !== '/usuario'){
+    //     next('/usuario');
+    // }else{
+    //     next();
+    // }
+    next();
+})
+
+export default router;

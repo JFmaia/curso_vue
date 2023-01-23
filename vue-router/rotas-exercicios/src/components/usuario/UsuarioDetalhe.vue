@@ -17,6 +17,15 @@
 export default {
     //Pegando os parametros da rota
    props:['id'],
+   beforeRouteEnter (to, from, next) {
+    console.log('Dentro do componente - usuario detalhe')
+    // next(userId =>{
+    //     console.log(userId.id)
+    // });
+    //caso o usuario não estivesse autenticado com o token ou expirou, exemplo:
+    const autenticado = false;
+    autenticado ? next : next(false);
+   }
 }
 </script>
 <style>
