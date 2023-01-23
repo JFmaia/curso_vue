@@ -15,6 +15,18 @@ Vue.use(Router)
 // Class de configuração do vue-router
 export default new Router({
     mode: 'history',
+    // Função de scroll até a ancora desejada com o hash
+    scrollBehavior(to, from, savedPosition){
+        if(savedPosition){
+            return savedPosition
+        }
+        else if(to.hash){
+            return { selector: to.hash}
+        }
+        else{
+            return { x: 0, y: 0 }
+        }
+    },
     routes:[
         {
             path: '/',
