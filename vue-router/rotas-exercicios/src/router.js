@@ -51,6 +51,18 @@ export default new Router({
                     name: 'editarUsuario',
                 },
             ]
+        }, 
+
+        //redirecionando para o usuario pela url 'redirecionar'
+        {
+            path:'/redirecionar',
+            redirect:'/usuario'
+        },
+
+        //redirecionando qualquer url não suportada para o inicio 
+        {
+            path:'*',
+            redirect:'/'
         },
     ]
 });
