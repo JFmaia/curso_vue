@@ -4,13 +4,14 @@ import Inicio from './components/Inicio';
 import Menu from './components/template/Menu';
 import MenuAlt from './components/template/MenuAlt';
 
-import Usuario from './components/usuario/Usuario';
-import UsuarioLista from './components/usuario/UsuarioLista';
-import UsuarioDetalhe from './components/usuario/UsuarioDetalhe';
-import UsuarioEditar from './components/usuario/UsuarioEditar';
-
 // Registrando a Router no Vue
 Vue.use(Router)
+
+//Configuração pra renderização tardia, pois os imports só viram quando for realmente necessario.
+const Usuario = () => import(/* webpackChunkName: "usuario" */'./components/usuario/Usuario');
+const UsuarioEditar = () => import(/* webpackChunkName: "usuario" */'./components/usuario/UsuarioEditar');
+const UsuarioLista = () => import(/* webpackChunkName: "usuario" */'./components/usuario/UsuarioLista');
+const UsuarioDetalhe = () => import(/* webpackChunkName: "usuario" */'./components/usuario/UsuarioDetalhe');
 
 // Class de configuração do vue-router
 const router = new Router({
