@@ -11,7 +11,7 @@
 </template>
 
 <script lang="js">
-
+import { mapMutations } from 'vuex'
 export default {
     data() {
         return {
@@ -39,6 +39,8 @@ export default {
     //     },
     // },
     methods: {
+        //Setando o sett 'adicionarProduto' nos methods.
+        ...mapMutations(['adicionarProduto']),
         adicionar() {
             const produto = {
                 id: this.sequencia,
@@ -48,7 +50,9 @@ export default {
             }
             this.sequencia++
             //Adicionando no stado central do vuex, onde vai atualizar todos os outros componentes.
-            this.$store.state.produtos.push(produto);
+            this.adicionarProduto(produto);
+            // this.$store.commit('adicionarProduto',produto);
+            // this.$store.state.produtos.push(produto);
         }
     }
 }

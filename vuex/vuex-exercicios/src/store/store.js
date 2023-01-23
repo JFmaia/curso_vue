@@ -13,4 +13,10 @@ export default new Vuex.Store({
                 .reduce((total, atual) => total + atual, 0)
         },
     },
+    mutations:{
+        //Em todos os methodos de uma mutations só pode passar um parametro, aqui é o 'payload
+        adicionarProduto(state, produto){
+            state.produtos.push(produto);
+        }
+    }
 });
