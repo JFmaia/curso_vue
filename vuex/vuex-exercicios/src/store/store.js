@@ -6,6 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
         produtos:[],
+        quantidade: 0,
+        preco: 0
     },
     getters:{
         valorTotal(state){
@@ -18,6 +20,12 @@ export default new Vuex.Store({
         //Em todos os methodos de uma mutations só pode passar um parametro, aqui é o 'payload
         adicionarProduto(state, produto){
             state.produtos.push(produto);
+        },
+        setQuantidade(state,payload){
+            state.quantidade = payload;
+        },
+        setPreco(state,payload){
+            state.preco = payload;
         }
     },
 
@@ -27,9 +35,7 @@ export default new Vuex.Store({
     */
     actions:{
         adicionarProduto(context,payload){
-            setTimeout(()=>{
-                context.commit('adicionarProduto',payload);
-            },1000);
+            context.commit('adicionarProduto',payload);
         }
     }
 });
