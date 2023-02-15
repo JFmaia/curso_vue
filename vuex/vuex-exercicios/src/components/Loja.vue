@@ -16,28 +16,16 @@ export default {
     data() {
         return {
             sequencia: 1,
-            quantidade: 1,
-            preco: 9.99,
         }
     },
-    // computed: {
-    //     quantidade: {
-    //         get () {
-    //             return this.$store.state.parametros.quantidade
-    //         },
-    //         set (valor) {
-    //             this.$store.commit('setQuantidade', valor)
-    //         }
-    //     },
-    //     preco: {
-    //         get () {
-    //             return this.$store.state.parametros.preco
-    //         },
-    //         set (valor) {
-    //             this.$store.commit('setPreco', valor)
-    //         }
-    //     },
-    // },
+    computed:{
+        quantidade(){
+            return this.$store.state.quantidade
+        },
+        preco(){
+            return this.$store.state.preco
+        }
+    },
     methods: {
         /*
             Setando o sett 'adicionarProduto' nos methods. Se fosse para usar a mutations de forma direta.
