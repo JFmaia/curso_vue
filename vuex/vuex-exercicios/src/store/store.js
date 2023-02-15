@@ -32,4 +32,5 @@ export default new Vuex.Store({
             },1000);
         }
     }
+    
 });
