@@ -32,7 +32,7 @@ export default {
         ...mapGetters({total:'valorTotal'}),
         //Todo metodo computed pode ser acessado como um atributo
         produtos() {
-            return this.$store.state.produtos;
+            return this.$store.state.carrinho.produtos;
         }
     },
 }
