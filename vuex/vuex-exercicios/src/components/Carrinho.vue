@@ -29,7 +29,7 @@
 import { mapGetters } from 'vuex';
 export default {
     computed: {
-        ...mapGetters({total:'valorTotal'}),
+        ...mapGetters('carrinho',{total:'valorTotal'}),
         //Todo metodo computed pode ser acessado como um atributo
         produtos() {
             return this.$store.state.carrinho.produtos;

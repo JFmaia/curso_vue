@@ -33,7 +33,7 @@ export default {
         */ 
 
         //Utilizando Actions
-        ...mapActions(['adicionarProduto']),
+        ...mapActions('carrinho',['adicionarProduto']),
 
         adicionar() {
             const produto = {
